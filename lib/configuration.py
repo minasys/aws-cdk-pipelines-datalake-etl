@@ -61,7 +61,7 @@ def get_local_configuration(environment: str) -> dict:
             REGION: 'us-east-2',
             GITHUB_REPOSITORY_OWNER_NAME: 'minasys',
             # If you use GitHub / GitHub Enterprise, this will be the organization name
-            GITHUB_REPOSITORY_NAME: 'aws-cdk-pipelines-datalake-infrastructure',
+            GITHUB_REPOSITORY_NAME: 'aws-cdk-pipelines-datalake-etl',
             # Use your forked repo here!
             # This is used in the Logical Id of CloudFormation resources
             # We recommend capital case for consistency. e.g. DataLakeCdkBlog
