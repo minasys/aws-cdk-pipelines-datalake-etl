@@ -80,6 +80,16 @@ class PipelineStack(cdk.Stack):
                 # build_command='pytest unit_tests',
                 role_policy_statements=[
                     iam.PolicyStatement(
+                        sid='EtlPipelineSTSAssumeRolePolicy',
+                        effect=iam.Effect.ALLOW,
+                        actions=[
+                            'sts:AssumeRole',
+                        ],
+                        resources=[
+                            '*',
+                        ],
+                    ),
+                    iam.PolicyStatement(
                         sid='EtlSecretsManagerPolicy',
                         effect=iam.Effect.ALLOW,
                         actions=[
@@ -88,22 +98,12 @@ class PipelineStack(cdk.Stack):
                         resources=[
                             f'arn:aws:secretsmanager:{self.region}:{self.account}:secret:/DataLake/*',
                         ],
-                    ),
+                    ),                    
                     iam.PolicyStatement(
                         sid='EtlKmsPolicy',
                         effect=iam.Effect.ALLOW,
                         actions=[
                             'kms:*',
-                        ],
-                        resources=[
-                            '*',
-                        ],
-                    ),
-                    iam.PolicyStatement(
-                        sid='EtlVpcPolicy',
-                        effect=iam.Effect.ALLOW,
-                        actions=[
-                            'vpc:*',
                         ],
                         resources=[
                             '*',
